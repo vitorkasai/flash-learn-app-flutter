@@ -1,0 +1,1 @@
+ /Users/vitorkasai/git/UFSCar/DevMovel/flash-learn-app-flutter/flash-learn-fl/.dart_tool/flutter_build/cbc8ca82a3aca29042afccbaf5b4ec03/native_assets.yaml: 
