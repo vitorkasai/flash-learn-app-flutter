@@ -62,14 +62,12 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       final back = _backController.text;
 
                       if (front.isNotEmpty && back.isNotEmpty) {
-                        // Chama o ViewModel para adicionar o cartão
                         await addCardViewModel.addCard(
                           front,
                           back,
-                          widget.category, // Passa a categoria do deck
+                          widget.category,
                         );
 
-                        // Volta para a tela anterior e sinaliza que o cartão foi adicionado
                         Navigator.of(context).pop(true);
                       }
                     },

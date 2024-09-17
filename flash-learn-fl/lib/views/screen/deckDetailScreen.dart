@@ -22,14 +22,12 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
   @override
   void initState() {
     super.initState();
-    // Carrega os cards com base na categoria ao iniciar a tela
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<DeckDetailViewModel>(context, listen: false)
           .loadCardsByCategory(widget.deckName);
     });
   }
 
-  // Método para recarregar os cartões
   void _reloadCards() {
     Provider.of<DeckDetailViewModel>(context, listen: false)
         .loadCardsByCategory(widget.deckName);
@@ -51,7 +49,7 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
             Expanded(
               child: viewModel.isLoading
                   ? const Center(
-                      child: CircularProgressIndicator()) // Exibe carregando
+                      child: CircularProgressIndicator())
                   : ListView.builder(
                       itemCount: viewModel.cardList.length,
                       itemBuilder: (context, index) {
@@ -88,7 +86,6 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
                                 IconButton(
                                   icon: const Icon(Icons.delete),
                                   onPressed: () async {
-                                    // Chama o método para deletar o card
                                     await viewModel.deleteCard(
                                         card.id, widget.deckName);
                                   },
@@ -113,12 +110,10 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () async {
-                      // Redireciona para AddCardScreen e aguarda o resultado
                       final result = await Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => AddCardScreen(
                             category: widget.deckName,
-                            // Passa a categoria do deck
                             onNavigateUp: () {
                               Navigator.of(context).pop();
                             },
@@ -126,9 +121,8 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
                         ),
                       );
 
-                      // Verifica se um cartão foi adicionado e recarrega os cartões
                       if (result == true) {
-                        _reloadCards(); // Recarrega os cartões
+                        _reloadCards();
                       }
                     },
                     child: const Text('Adicionar Cartão'),

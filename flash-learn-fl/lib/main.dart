@@ -1,5 +1,5 @@
 import 'package:flashlearnapp_fl/repository/apiRepository.dart';
-import 'package:flashlearnapp_fl/views/screen/MainScreen.dart';
+import 'package:flashlearnapp_fl/views/screen/mainScreen.dart';
 import 'package:flashlearnapp_fl/views/viewmodel/addCardViewModel.dart';
 import 'package:flashlearnapp_fl/views/viewmodel/addDeckViewModel.dart';
 import 'package:flashlearnapp_fl/views/viewmodel/choiceDeckViewModel.dart';

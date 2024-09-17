@@ -43,7 +43,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Revisão de Cards'),
+        title: const Text('Revisando cartões'),
       ),
       body: Center(
         child: Padding(
@@ -61,7 +61,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
 
               if (isBackVisible)
                 Text(
-                  'Resposta: ${currentCard.back}',
+                  'Verso: ${currentCard.back}',
                   style: Theme.of(context).textTheme.headlineSmall,
                   textAlign: TextAlign.center,
                 ),

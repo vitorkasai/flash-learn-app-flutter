@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../viewmodel/manageDecksViewModel.dart';
 import 'addDeckScreen.dart';
-import 'deckDetailScreen.dart'; // Importa a tela DeckDetailScreen
+import 'deckDetailScreen.dart';
 
 class ManageDecksScreen extends StatefulWidget {
   final VoidCallback onNavigateUp;
@@ -43,7 +43,7 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  'Gerenciar Decks',
+                  'Selecione um Deck',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
@@ -66,7 +66,6 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
                                 },
                               ),
                               onTap: () {
-                                // Redireciona para a tela de detalhes do deck
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) => DeckDetailScreen(
@@ -97,14 +96,12 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    // Navega para a tela de adicionar deck e aguarda o resultado
                     final result = await Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const AddDeckScreen(),
                       ),
                     );
 
-                    // Verifica se o resultado foi sucesso (true) e recarrega os decks
                     if (result == true) {
                       Provider.of<ManageDecksViewModel>(context, listen: false)
                           .loadDecks();

@@ -30,7 +30,7 @@ class ChoiceDeckScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
-                'Card Decks',
+                'Decks disponíveis',
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),

@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flashlearnapp_fl/repository/cardDto.dart';
+
 import 'deckDto.dart';
 
 class ApiRepository {
-  final _dio = Dio(BaseOptions(baseUrl: "http://10.0.2.2:8080/"));
+  final Dio dio;
+
+  ApiRepository({Dio? dio}) : dio = dio ?? Dio(BaseOptions(baseUrl: "http://10.0.2.2:8080/"));
 
   Future<List<DeckDTO>> getAllDecks() async {
-    final response = await _dio.get('/deck');
+    final response = await dio.get('/deck');
 
     if (response.statusCode == 200) {
       List<dynamic> data = response.data as List<dynamic>;
@@ -20,7 +23,7 @@ class ApiRepository {
   }
 
   Future<List<CardDTO>> getCardsByCategory(String category) async {
-    final response = await _dio.get('/card/$category');
+    final response = await dio.get('/card/$category');
 
     if (response.statusCode == 200) {
       List<dynamic> data = response.data as List<dynamic>;
@@ -34,7 +37,7 @@ class ApiRepository {
   }
 
   Future<void> deleteDeck(int id) async {
-    final response = await _dio.delete('/deck/$id');
+    final response = await dio.delete('/deck/$id');
 
     if (response.statusCode != 200) {
       throw Exception('Falha ao deletar o deck');
@@ -43,7 +46,7 @@ class ApiRepository {
 
   Future<void> createDeck(String category) async {
     try {
-      final response = await _dio.post(
+      final response = await dio.post(
         '/deck',
         data: {
           'category': category,
@@ -62,7 +65,7 @@ class ApiRepository {
 
   Future<void> addCard(String front, String back, String deckCategory) async {
     try {
-      final response = await _dio.post(
+      final response = await dio.post(
         '/card',
         data: {
           'front': front,
@@ -82,7 +85,7 @@ class ApiRepository {
   }
 
   Future<void> deleteCard(int id) async {
-    final response = await _dio.delete('/card/$id');
+    final response = await dio.delete('/card/$id');
 
     if (response.statusCode != 200) {
       throw Exception('Falha ao deletar o cartão');

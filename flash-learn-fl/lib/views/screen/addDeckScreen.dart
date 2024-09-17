@@ -47,10 +47,8 @@ class _AddDeckScreenState extends State<AddDeckScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    // Adiciona o deck
                     await addDeckViewModel.addDeck(category);
 
-                    // Redireciona e passa um resultado de sucesso
                     Navigator.pop(context, true);
                   },
                   child: const Text('Adicionar'),
