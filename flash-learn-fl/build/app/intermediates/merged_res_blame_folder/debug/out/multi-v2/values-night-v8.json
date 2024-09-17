@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.one2nineapp_fl.one2nineapp_fl.app-mergeDebugResources-25:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.flashlearnapp_fl.app-mergeDebugResources-25:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "/Users/vitorkasai/git/UFSCar/DevMovel/flash-learn-app-flutter/flash-learn-fl/android/app/src/main/res/values-night/styles.xml",

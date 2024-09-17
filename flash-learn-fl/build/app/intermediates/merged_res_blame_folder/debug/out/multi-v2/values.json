@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.one2nineapp_fl.one2nineapp_fl.app-mergeDebugResources-25:/values/values.xml",
+            "outputFile": "com.example.flashlearnapp_fl.app-mergeDebugResources-25:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/vitorkasai/.gradle/caches/transforms-3/60844366ea525d13fb1a11c2396bc3b3/transformed/fragment-1.7.1/res/values/values.xml",

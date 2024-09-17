@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.one2nineapp_fl.one2nineapp_fl"
+3    package="com.example.flashlearnapp_fl"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -18,12 +18,12 @@
 16
 17    <permission
 17-->[androidx.core:core:1.13.1] /Users/vitorkasai/.gradle/caches/transforms-3/7b9cc716733896fdb33be34a758f3226/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
-18        android:name="com.example.one2nineapp_fl.one2nineapp_fl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+18        android:name="com.example.flashlearnapp_fl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 18-->[androidx.core:core:1.13.1] /Users/vitorkasai/.gradle/caches/transforms-3/7b9cc716733896fdb33be34a758f3226/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
 19        android:protectionLevel="signature" />
 19-->[androidx.core:core:1.13.1] /Users/vitorkasai/.gradle/caches/transforms-3/7b9cc716733896fdb33be34a758f3226/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
 20
-21    <uses-permission android:name="com.example.one2nineapp_fl.one2nineapp_fl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+21    <uses-permission android:name="com.example.flashlearnapp_fl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 21-->[androidx.core:core:1.13.1] /Users/vitorkasai/.gradle/caches/transforms-3/7b9cc716733896fdb33be34a758f3226/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
 21-->[androidx.core:core:1.13.1] /Users/vitorkasai/.gradle/caches/transforms-3/7b9cc716733896fdb33be34a758f3226/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 22
@@ -33,9 +33,9 @@
 25-->[androidx.core:core:1.13.1] /Users/vitorkasai/.gradle/caches/transforms-3/7b9cc716733896fdb33be34a758f3226/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 26        android:debuggable="true"
 27        android:icon="@mipmap/ic_launcher"
-28        android:label="one2nineapp_fl" >
+28        android:label="flashlearnapp_fl" >
 29        <activity
-30            android:name="com.example.one2nineapp_fl.one2nineapp_fl.MainActivity"
+30            android:name="com.example.flashlearnapp_fl.MainActivity"
 31            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 32            android:exported="true"
 33            android:hardwareAccelerated="true"
@@ -84,7 +84,7 @@
 69-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/vitorkasai/.gradle/caches/transforms-3/c314bda16b29ffcabb14b4b56664b376/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
 70            android:name="androidx.startup.InitializationProvider"
 70-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/vitorkasai/.gradle/caches/transforms-3/c314bda16b29ffcabb14b4b56664b376/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:25:13-67
-71            android:authorities="com.example.one2nineapp_fl.one2nineapp_fl.androidx-startup"
+71            android:authorities="com.example.flashlearnapp_fl.androidx-startup"
 71-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/vitorkasai/.gradle/caches/transforms-3/c314bda16b29ffcabb14b4b56664b376/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:26:13-68
 72            android:exported="false" >
 72-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/vitorkasai/.gradle/caches/transforms-3/c314bda16b29ffcabb14b4b56664b376/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:27:13-37

@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-
-import 'package:one2nineapp_fl/views/gamePage.dart';
-import 'package:one2nineapp_fl/views/gameViewModel.dart';
-import 'package:one2nineapp_fl/views/scoresPage.dart';
 import 'package:provider/provider.dart';
 
+import '../repository/apiRepository.dart';
+import 'choiceDeckScreen.dart';
+import 'choiceDeckViewModel.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
-  void _startNewGame(BuildContext context) {
-    GameViewModel viewModel = Provider.of<GameViewModel>(context, listen: false);
-    viewModel.startGame();
-
-    Navigator.push(context, MaterialPageRoute(
-        builder: (_) => const GamePage(),
-    ));
-  }
-
-  void _viewScores(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(
-      builder: (_) => const ScoresPage(),
-    ));
+  void _startRevision(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ChangeNotifierProvider(
+          create: (_) => ChoiceDeckViewModel(ApiRepository()),  // Fornecendo o ViewModel
+          child: ChoiceDeckScreen(
+            onNavigateUp: () {
+              Navigator.pop(context);
+            }
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -29,31 +29,53 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("One 2 Nine"),
+        title: const Text("Flash Learn App"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
           children: <Widget>[
-            Padding(
-                padding: const EdgeInsets.all(20),
-                child: Text(
-                  'In this game, you need to count from 1 until 9 by pressing the buttons in the correct order as fast as you can. The numbers show up with different labels!',
-                  style: Theme.of(context).textTheme.bodyLarge,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Text(
+                    "Bem-vindo ao Flash Learn App, aqui você pode usar flash cards virtuais para estudos e memorização",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: () => _startNewGame(context),
-                child: const Text("Start New Game"),
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                'assets/icon.png',
+                height: 150,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: () => _viewScores(context),
-                child: const Text("View Scores"),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: ElevatedButton(
+                      onPressed: () => _startRevision(context),
+                      child: const Text("Iniciar revisão"),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: ElevatedButton(
+                      onPressed: () => (),
+                      child: const Text("Gerenciar pilhas de cartões"),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
               ),
             ),
           ],

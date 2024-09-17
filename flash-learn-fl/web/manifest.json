@@ -1,11 +1,11 @@
 {
-    "name": "one2nineapp_fl",
-    "short_name": "one2nineapp_fl",
+    "name": "flashlearnapp_fl",
+    "short_name": "flashlearnapp_fl",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "One2Nine game in Flutter",
+    "description": "Flash Learn App in Flutter",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

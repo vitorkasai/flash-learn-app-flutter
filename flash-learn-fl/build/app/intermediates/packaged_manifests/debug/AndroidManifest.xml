@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.one2nineapp_fl.one2nineapp_fl"
+    package="com.example.flashlearnapp_fl"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
@@ -15,19 +15,19 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <permission
-        android:name="com.example.one2nineapp_fl.one2nineapp_fl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.example.flashlearnapp_fl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.one2nineapp_fl.one2nineapp_fl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.example.flashlearnapp_fl.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:name="android.app.Application"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="one2nineapp_fl" >
+        android:label="flashlearnapp_fl" >
         <activity
-            android:name="com.example.one2nineapp_fl.one2nineapp_fl.MainActivity"
+            android:name="com.example.flashlearnapp_fl.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
             android:hardwareAccelerated="true"
@@ -68,7 +68,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.one2nineapp_fl.one2nineapp_fl.androidx-startup"
+            android:authorities="com.example.flashlearnapp_fl.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.lifecycle.ProcessLifecycleInitializer"

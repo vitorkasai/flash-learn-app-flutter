@@ -1,4 +1,4 @@
-package com.example.one2nineapp_fl.one2nineapp_fl
+package com.example.flashlearnapp_fl
 
 import io.flutter.embedding.android.FlutterActivity
 
