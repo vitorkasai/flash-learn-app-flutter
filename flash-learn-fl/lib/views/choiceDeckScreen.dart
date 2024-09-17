@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'cardsRevisionScreen.dart';
 import 'choiceDeckViewModel.dart';
 
 class ChoiceDeckScreen extends StatelessWidget {
@@ -33,7 +34,6 @@ class ChoiceDeckScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
-
             Expanded(
               child: Consumer<ChoiceDeckViewModel>(
                 builder: (context, viewModel, child) {
@@ -52,6 +52,16 @@ class ChoiceDeckScreen extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(vertical: 4.0),
                           child: InkWell(
                             onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CardsRevisionScreen(
+                                    cards: deck.cards,
+                                    onNavigateUp: () => Navigator.pop(
+                                        context),
+                                  ),
+                                ),
+                              );
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -72,7 +82,6 @@ class ChoiceDeckScreen extends StatelessWidget {
                 },
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(

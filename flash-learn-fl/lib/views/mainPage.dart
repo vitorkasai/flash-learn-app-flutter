@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (_) => ChangeNotifierProvider(
-          create: (_) => ChoiceDeckViewModel(ApiRepository()),  // Fornecendo o ViewModel
+          create: (_) => ChoiceDeckViewModel(ApiRepository()),
           child: ChoiceDeckScreen(
             onNavigateUp: () {
               Navigator.pop(context);

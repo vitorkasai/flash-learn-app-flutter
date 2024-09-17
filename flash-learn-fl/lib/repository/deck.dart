@@ -3,7 +3,7 @@ import 'package:flashlearnapp_fl/repository/card.dart';
 class Deck {
   final int id;
   final String category;
-  final List<Card> cards;
+  final List<CardDTO> cards;
 
   Deck({
     required this.id,
@@ -13,7 +13,7 @@ class Deck {
 
   factory Deck.fromJson(Map<String, dynamic> json) {
     var cardsJson = json['cards'] as List;
-    List<Card> cardList = cardsJson.map((cardJson) => Card.fromJson(cardJson)).toList();
+    List<CardDTO> cardList = cardsJson.map((cardJson) => CardDTO.fromJson(cardJson)).toList();
 
     return Deck(
       id: json['id'],
