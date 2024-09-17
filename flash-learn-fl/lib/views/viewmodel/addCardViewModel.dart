@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../repository/apiRepository.dart';
+import '../../repository/apiRepository.dart';
 
 class AddCardViewModel extends ChangeNotifier {
   final ApiRepository apiRepository;

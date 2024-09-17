@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'addCardViewModel.dart';
+import '../viewmodel/addCardViewModel.dart';
 
 class AddCardScreen extends StatefulWidget {
   final String category;

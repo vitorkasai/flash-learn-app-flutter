@@ -1,10 +1,10 @@
 import 'package:flashlearnapp_fl/repository/apiRepository.dart';
-import 'package:flashlearnapp_fl/views/addCardViewModel.dart';
-import 'package:flashlearnapp_fl/views/addDeckViewModel.dart';
-import 'package:flashlearnapp_fl/views/choiceDeckViewModel.dart';
-import 'package:flashlearnapp_fl/views/deckDetailViewModel.dart';
-import 'package:flashlearnapp_fl/views/mainPage.dart';
-import 'package:flashlearnapp_fl/views/manageDecksViewModel.dart';
+import 'package:flashlearnapp_fl/views/screen/MainScreen.dart';
+import 'package:flashlearnapp_fl/views/viewmodel/addCardViewModel.dart';
+import 'package:flashlearnapp_fl/views/viewmodel/addDeckViewModel.dart';
+import 'package:flashlearnapp_fl/views/viewmodel/choiceDeckViewModel.dart';
+import 'package:flashlearnapp_fl/views/viewmodel/deckDetailViewModel.dart';
+import 'package:flashlearnapp_fl/views/viewmodel/manageDecksViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainPage(),
+      home: const MainScreen(),
     );
   }
 }

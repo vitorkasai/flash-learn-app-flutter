@@ -1,21 +1,21 @@
-import 'package:flashlearnapp_fl/repository/card.dart';
+import 'package:flashlearnapp_fl/repository/cardDto.dart';
 
-class Deck {
+class DeckDTO {
   final int id;
   final String category;
   final List<CardDTO> cards;
 
-  Deck({
+  DeckDTO({
     required this.id,
     required this.category,
     required this.cards,
   });
 
-  factory Deck.fromJson(Map<String, dynamic> json) {
+  factory DeckDTO.fromJson(Map<String, dynamic> json) {
     var cardsJson = json['cards'] as List;
     List<CardDTO> cardList = cardsJson.map((cardJson) => CardDTO.fromJson(cardJson)).toList();
 
-    return Deck(
+    return DeckDTO(
       id: json['id'],
       category: json['category'],
       cards: cardList,
@@ -24,6 +24,6 @@ class Deck {
 
   @override
   String toString() {
-    return 'Deck(id: $id, category: $category, cards: $cards)';
+    return 'DeckDTO(id: $id, category: $category, cards: $cards)';
   }
 }

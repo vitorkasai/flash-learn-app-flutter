@@ -1,18 +1,18 @@
-import 'package:flashlearnapp_fl/repository/deck.dart';
+import 'package:flashlearnapp_fl/repository/deckDto.dart';
 import 'package:flutter/foundation.dart';
 
-import '../repository/apiRepository.dart';
+import '../../repository/apiRepository.dart';
 
 class ChoiceDeckViewModel extends ChangeNotifier {
   final ApiRepository apiRepository;
   bool _isLoading = false;
-  List<Deck> _decks = [];
+  List<DeckDTO> _decks = [];
 
   ChoiceDeckViewModel(this.apiRepository);
 
   bool get isLoading => _isLoading;
 
-  List<Deck> get decks => _decks;
+  List<DeckDTO> get decks => _decks;
 
   Future<void> loadDecks() async {
     _setLoading(true);

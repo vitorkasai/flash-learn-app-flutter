@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../viewmodel/deckDetailViewModel.dart';
 import 'addCardScreen.dart';
-import 'deckDetailViewModel.dart';
 
 class DeckDetailScreen extends StatefulWidget {
   final String deckName;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../viewmodel/manageDecksViewModel.dart';
 import 'addDeckScreen.dart';
 import 'deckDetailScreen.dart'; // Importa a tela DeckDetailScreen
-import 'manageDecksViewModel.dart';
 
 class ManageDecksScreen extends StatefulWidget {
   final VoidCallback onNavigateUp;
@@ -70,11 +70,10 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) => DeckDetailScreen(
-                                      deckName: deck.category,
-                                      onNavigateUp: () {
-                                        Navigator.of(context).pop();
-                                      }
-                                    ),
+                                        deckName: deck.category,
+                                        onNavigateUp: () {
+                                          Navigator.of(context).pop();
+                                        }),
                                   ),
                                 );
                               },
@@ -101,7 +100,7 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
                     // Navega para a tela de adicionar deck e aguarda o resultado
                     final result = await Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => AddDeckScreen(),
+                        builder: (context) => const AddDeckScreen(),
                       ),
                     );
 

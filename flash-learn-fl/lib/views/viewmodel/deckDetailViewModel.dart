@@ -1,6 +1,6 @@
 import 'package:flashlearnapp_fl/repository/apiRepository.dart';
 import 'package:flutter/material.dart';
-import '../repository/card.dart';
+import '../../repository/cardDto.dart';
 
 class DeckDetailViewModel extends ChangeNotifier {
   final ApiRepository apiRepository;

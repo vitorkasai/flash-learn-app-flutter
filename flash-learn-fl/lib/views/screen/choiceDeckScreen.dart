@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../viewmodel/choiceDeckViewModel.dart';
 import 'cardsRevisionScreen.dart';
-import 'choiceDeckViewModel.dart';
 
 class ChoiceDeckScreen extends StatelessWidget {
   final VoidCallback onNavigateUp;

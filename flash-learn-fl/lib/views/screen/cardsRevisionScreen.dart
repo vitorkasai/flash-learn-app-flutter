@@ -1,4 +1,4 @@
-import 'package:flashlearnapp_fl/repository/card.dart';
+import 'package:flashlearnapp_fl/repository/cardDto.dart';
 import 'package:flutter/material.dart';
 
 import 'endRevisionScreen.dart';

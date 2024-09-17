@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
-import 'package:flashlearnapp_fl/repository/card.dart';
-import 'deck.dart';
+import 'package:flashlearnapp_fl/repository/cardDto.dart';
+import 'deckDto.dart';
 
 class ApiRepository {
   final _dio = Dio(BaseOptions(baseUrl: "http://10.0.2.2:8080/"));
 
-  Future<List<Deck>> getAllDecks() async {
+  Future<List<DeckDTO>> getAllDecks() async {
     final response = await _dio.get('/deck');
 
     if (response.statusCode == 200) {
       List<dynamic> data = response.data as List<dynamic>;
-      List<Deck> decks = data.map((deckJson) {
-        return Deck.fromJson(deckJson);
+      List<DeckDTO> decks = data.map((deckJson) {
+        return DeckDTO.fromJson(deckJson);
       }).toList();
       return decks;
     } else {

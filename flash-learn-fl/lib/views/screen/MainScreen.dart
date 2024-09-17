@@ -1,26 +1,19 @@
-import 'package:flashlearnapp_fl/views/manageDecksScreen.dart';
-import 'package:flashlearnapp_fl/views/manageDecksViewModel.dart';
+import 'package:flashlearnapp_fl/views/screen/manageDecksScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../repository/apiRepository.dart';
 import 'choiceDeckScreen.dart';
-import 'choiceDeckViewModel.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
 
   void _startRevision(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => ChangeNotifierProvider(
-          create: (_) => ChoiceDeckViewModel(ApiRepository()),
-          child: ChoiceDeckScreen(
-            onNavigateUp: () {
-              Navigator.pop(context);
-            }
-          ),
+        builder: (_) => ChoiceDeckScreen(
+          onNavigateUp: () {
+            Navigator.pop(context);
+          },
         ),
       ),
     );
@@ -30,13 +23,10 @@ class MainPage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => ChangeNotifierProvider(
-          create: (_) => ManageDecksViewModel(ApiRepository()),
-          child: ManageDecksScreen(
-              onNavigateUp: () {
-                Navigator.pop(context);
-              }
-          ),
+        builder: (_) => ManageDecksScreen(
+          onNavigateUp: () {
+            Navigator.pop(context);
+          },
         ),
       ),
     );

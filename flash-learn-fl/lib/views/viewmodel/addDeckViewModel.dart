@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../repository/apiRepository.dart';
+import '../../repository/apiRepository.dart';
 
 class AddDeckViewModel extends ChangeNotifier {
-  final ApiRepository _apiRepository;
+  final ApiRepository apiRepository;
 
-  AddDeckViewModel(this._apiRepository);
+  AddDeckViewModel(this.apiRepository);
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
@@ -19,7 +19,7 @@ class AddDeckViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      await _apiRepository.createDeck(category);
+      await apiRepository.createDeck(category);
       _isLoading = false;
       notifyListeners();
     } catch (e) {
