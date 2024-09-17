@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'addDeckScreen.dart';
+import 'deckDetailScreen.dart'; // Importa a tela DeckDetailScreen
 import 'manageDecksViewModel.dart';
 
 class ManageDecksScreen extends StatefulWidget {
@@ -63,7 +65,22 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
                                   viewModel.deleteDeck(deck.id);
                                 },
                               ),
-                              onTap: () => {},
+                              onTap: () {
+                                // Redireciona para a tela de detalhes do deck
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => DeckDetailScreen(
+                                      deckName: deck.category,
+                                      onNavigateUp: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      onAddCard: () {
+                                        // Implementar ação de adicionar cartão
+                                      },
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           );
                         },

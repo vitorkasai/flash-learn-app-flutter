@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flashlearnapp_fl/repository/card.dart';
 
 import 'deck.dart';
 
@@ -16,6 +17,20 @@ class ApiRepository {
       return decks;
     } else {
       throw Exception('Falha ao carregar decks');
+    }
+  }
+
+  Future<List<CardDTO>> getCardsByCategory(String category) async {
+    final response = await _dio.get('/card/$category');
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = response.data as List<dynamic>;
+      List<CardDTO> cards = data.map((cardJson) {
+        return CardDTO.fromJson(cardJson);
+      }).toList();
+      return cards;
+    } else {
+      throw Exception('Falha ao carregar cards');
     }
   }
 
