@@ -1,3 +1,5 @@
+import 'package:flashlearnapp_fl/views/manageDecksScreen.dart';
+import 'package:flashlearnapp_fl/views/manageDecksViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +20,22 @@ class MainPage extends StatelessWidget {
             onNavigateUp: () {
               Navigator.pop(context);
             }
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _manageDecks(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ChangeNotifierProvider(
+          create: (_) => ManageDecksViewModel(ApiRepository()),
+          child: ManageDecksScreen(
+              onNavigateUp: () {
+                Navigator.pop(context);
+              }
           ),
         ),
       ),
@@ -70,7 +88,7 @@ class MainPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: ElevatedButton(
-                      onPressed: () => (),
+                      onPressed: () => _manageDecks(context),
                       child: const Text("Gerenciar pilhas de cartões"),
                     ),
                   ),
