@@ -1,4 +1,4 @@
-#Tue Sep 17 17:55:12 BRT 2024
+#Tue Sep 17 18:26:08 BRT 2024
 base.0=/Users/vitorkasai/git/UFSCar/DevMovel/flash-learn-app-flutter/flash-learn-fl/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/vitorkasai/git/UFSCar/DevMovel/flash-learn-app-flutter/flash-learn-fl/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/Users/vitorkasai/git/UFSCar/DevMovel/flash-learn-app-flutter/flash-learn-fl/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex

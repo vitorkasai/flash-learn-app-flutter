@@ -1,8 +1,6 @@
 import 'package:flashlearnapp_fl/repository/apiRepository.dart';
 import 'package:flutter/material.dart';
-
 import '../repository/card.dart';
-
 
 class DeckDetailViewModel extends ChangeNotifier {
   final ApiRepository apiRepository;
@@ -28,6 +26,25 @@ class DeckDetailViewModel extends ChangeNotifier {
     } finally {
       _isLoading = false;
       notifyListeners(); // Notifica o estado após carregamento
+    }
+  }
+
+  // Novo método para excluir um cartão
+  Future<void> deleteCard(int id, String category) async {
+    try {
+      _isLoading = true;
+      notifyListeners();
+
+      // Chama o repositório para excluir o cartão
+      await apiRepository.deleteCard(id);
+
+      // Recarrega os cartões após a exclusão
+      await loadCardsByCategory(category);
+    } catch (e) {
+      print('Erro ao excluir o cartão: $e');
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
 }

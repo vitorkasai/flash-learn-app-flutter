@@ -87,8 +87,10 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
                                 ),
                                 IconButton(
                                   icon: const Icon(Icons.delete),
-                                  onPressed: () {
-                                    // Sem ação por enquanto
+                                  onPressed: () async {
+                                    // Chama o método para deletar o card
+                                    await viewModel.deleteCard(
+                                        card.id, widget.deckName);
                                   },
                                 ),
                               ],

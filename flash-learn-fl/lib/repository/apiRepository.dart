@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flashlearnapp_fl/repository/card.dart';
-
 import 'deck.dart';
 
 class ApiRepository {
@@ -79,6 +78,16 @@ class ApiRepository {
       }
     } catch (e) {
       throw Exception('Erro ao criar o cartão: $e');
+    }
+  }
+
+  Future<void> deleteCard(int id) async {
+    final response = await _dio.delete('/card/$id');
+
+    if (response.statusCode != 200) {
+      throw Exception('Falha ao deletar o cartão');
+    } else {
+      print('Cartão excluído com sucesso!');
     }
   }
 }
