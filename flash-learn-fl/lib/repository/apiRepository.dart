@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+
 import 'deck.dart';
 
 class ApiRepository {
@@ -23,6 +24,25 @@ class ApiRepository {
 
     if (response.statusCode != 200) {
       throw Exception('Falha ao deletar o deck');
+    }
+  }
+
+  Future<void> createDeck(String category) async {
+    try {
+      final response = await _dio.post(
+        '/deck',
+        data: {
+          'category': category,
+        },
+      );
+
+      if (response.statusCode == 201) {
+        print('Deck criado com sucesso!');
+      } else {
+        throw Exception('Falha ao criar o deck');
+      }
+    } catch (e) {
+      throw Exception('Erro ao criar o deck: $e');
     }
   }
 }

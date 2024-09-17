@@ -1,4 +1,5 @@
 import 'package:flashlearnapp_fl/repository/apiRepository.dart';
+import 'package:flashlearnapp_fl/views/addDeckViewModel.dart';
 import 'package:flashlearnapp_fl/views/choiceDeckViewModel.dart';
 import 'package:flashlearnapp_fl/views/mainPage.dart';
 import 'package:flashlearnapp_fl/views/manageDecksViewModel.dart';
@@ -14,7 +15,8 @@ void main() async {
       MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => ChoiceDeckViewModel(apiRepository)),
-          ChangeNotifierProvider(create: (_) => ManageDecksViewModel(apiRepository))
+          ChangeNotifierProvider(create: (_) => ManageDecksViewModel(apiRepository)),
+          ChangeNotifierProvider(create: (_) => AddDeckViewModel(apiRepository)),
         ],
         child: const MyApp(),
       )
