@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'addCardScreen.dart';
 import 'deckDetailViewModel.dart';
 
 class DeckDetailScreen extends StatefulWidget {
   final String deckName;
   final VoidCallback onNavigateUp;
-  final VoidCallback onAddCard;
 
   const DeckDetailScreen({
     Key? key,
     required this.deckName,
     required this.onNavigateUp,
-    required this.onAddCard,
   }) : super(key: key);
 
   @override
@@ -30,6 +29,12 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
     });
   }
 
+  // Método para recarregar os cartões
+  void _reloadCards() {
+    Provider.of<DeckDetailViewModel>(context, listen: false)
+        .loadCardsByCategory(widget.deckName);
+  }
+
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<DeckDetailViewModel>(context);
@@ -45,47 +50,53 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
           children: [
             Expanded(
               child: viewModel.isLoading
-                  ? const Center(child: CircularProgressIndicator()) // Exibe carregando
+                  ? const Center(
+                      child: CircularProgressIndicator()) // Exibe carregando
                   : ListView.builder(
-                itemCount: viewModel.cardList.length,
-                itemBuilder: (context, index) {
-                  final card = viewModel.cardList[index];
-                  return Card(
-                    elevation: 4,
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                      itemCount: viewModel.cardList.length,
+                      itemBuilder: (context, index) {
+                        final card = viewModel.cardList[index];
+                        return Card(
+                          elevation: 4,
+                          margin: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  'Frente: ${card.front}',
-                                  style: Theme.of(context).textTheme.bodyLarge,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Frente: ${card.front}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        'Verso: ${card.back}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Verso: ${card.back}',
-                                  style: Theme.of(context).textTheme.bodyLarge,
+                                IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  onPressed: () {
+                                    // Sem ação por enquanto
+                                  },
                                 ),
                               ],
                             ),
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () {
-                              // Sem ação por enquanto
-                            },
-                          ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,8 +110,24 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {
-                      // Sem ação por enquanto
+                    onPressed: () async {
+                      // Redireciona para AddCardScreen e aguarda o resultado
+                      final result = await Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => AddCardScreen(
+                            category: widget.deckName,
+                            // Passa a categoria do deck
+                            onNavigateUp: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ),
+                      );
+
+                      // Verifica se um cartão foi adicionado e recarrega os cartões
+                      if (result == true) {
+                        _reloadCards(); // Recarrega os cartões
+                      }
                     },
                     child: const Text('Adicionar Cartão'),
                   ),

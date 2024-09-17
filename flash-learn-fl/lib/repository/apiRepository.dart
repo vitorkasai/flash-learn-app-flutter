@@ -60,4 +60,25 @@ class ApiRepository {
       throw Exception('Erro ao criar o deck: $e');
     }
   }
+
+  Future<void> addCard(String front, String back, String deckCategory) async {
+    try {
+      final response = await _dio.post(
+        '/card',
+        data: {
+          'front': front,
+          'back': back,
+          'deckCategory': deckCategory,
+        },
+      );
+
+      if (response.statusCode == 201) {
+        print('Cartão criado com sucesso!');
+      } else {
+        throw Exception('Falha ao criar o cartão');
+      }
+    } catch (e) {
+      throw Exception('Erro ao criar o cartão: $e');
+    }
+  }
 }

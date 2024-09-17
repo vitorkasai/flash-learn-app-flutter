@@ -73,10 +73,7 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
                                       deckName: deck.category,
                                       onNavigateUp: () {
                                         Navigator.of(context).pop();
-                                      },
-                                      onAddCard: () {
-                                        // Implementar ação de adicionar cartão
-                                      },
+                                      }
                                     ),
                                   ),
                                 );
