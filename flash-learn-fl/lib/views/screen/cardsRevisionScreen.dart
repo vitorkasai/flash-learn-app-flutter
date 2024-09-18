@@ -30,8 +30,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
           context,
           MaterialPageRoute(
             builder: (context) => EndRevisionScreen(
-              onBackToDecks: () =>
-                  Navigator.pop(context),
+              onBackToDecks: () => Navigator.pop(context),
             ),
           ),
         );
@@ -54,19 +53,23 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
             children: [
               Text(
                 currentCard.front,
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium
+                    ?.copyWith(color: Colors.white), // Define a cor branca
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-
               if (isBackVisible)
                 Text(
                   'Verso: ${currentCard.back}',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(color: Colors.white), // Define a cor branca
                   textAlign: TextAlign.center,
                 ),
               const SizedBox(height: 20),
-
               ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -77,40 +80,54 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
                 child: const Text('Virar Cartão'),
               ),
               const SizedBox(height: 20),
-
               ElevatedButton(
                 onPressed: isNextEnabled
                     ? () {
-                        if (currentCardIndex < widget.cards.length - 1) {
-                          setState(() {
-                            currentCardIndex++;
-                            isBackVisible = false;
-                            isNextEnabled = false;
-                          });
-                        } else {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => EndRevisionScreen(
-                                onBackToDecks: () => Navigator.pop(context),
-                              ),
-                            ),
-                          );
-                        }
-                      }
+                  if (currentCardIndex < widget.cards.length - 1) {
+                    setState(() {
+                      currentCardIndex++;
+                      isBackVisible = false;
+                      isNextEnabled = false;
+                    });
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EndRevisionScreen(
+                          onBackToDecks: () => Navigator.pop(context),
+                        ),
+                      ),
+                    );
+                  }
+                }
                     : null,
-                child: const Text('Próximo Cartão'),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                        (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.disabled)) {
+                        return null;
+                      }
+                      return Colors.deepPurple;
+                    },
+                  ),
+                ),
+                child: const Text(
+                  'Próximo Cartão',
+                  style: TextStyle(color: Colors.white), // Texto em branco
+                ),
               ),
             ],
           ),
         ),
       ),
-
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ElevatedButton(
           onPressed: widget.onNavigateUp,
-          child: const Text('Sair da Revisão'),
+          child: const Text(
+            'Sair da Revisão',
+            style: TextStyle(color: Colors.white), // Texto em branco
+          ),
         ),
       ),
     );

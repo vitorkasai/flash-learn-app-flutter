@@ -1,7 +1,9 @@
-import 'package:flashlearnapp_fl/views/screen/manageDecksScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../theme_provider.dart';
 import 'choiceDeckScreen.dart';
+import 'manageDecksScreen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -34,10 +36,21 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Flash Learn App"),
+        actions: [
+          IconButton(
+            icon: Icon(
+                themeProvider.isDarkMode ? Icons.dark_mode : Icons.light_mode),
+            onPressed: () {
+              themeProvider.toggleTheme();
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Stack(
