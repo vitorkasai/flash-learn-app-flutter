@@ -24,17 +24,17 @@ class _AddDeckScreenState extends State<AddDeckScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Adicionar Deck',
+              'Informe a categoria do deck',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 16),
             TextField(
               decoration: const InputDecoration(
                 labelText: 'Categoria',
+                border: OutlineInputBorder(),
               ),
               onChanged: (value) {
                 setState(() {
@@ -43,18 +43,14 @@ class _AddDeckScreenState extends State<AddDeckScreen> {
               },
             ),
             const SizedBox(height: 16),
-            Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    await addDeckViewModel.addDeck(category);
-
-                    Navigator.pop(context, true);
-                  },
-                  child: const Text('Adicionar'),
-                ),
-                const SizedBox(height: 8),
-              ],
+            Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  await addDeckViewModel.addDeck(category);
+                  Navigator.pop(context, true);
+                },
+                child: const Text('Adicionar'),
+              ),
             ),
           ],
         ),

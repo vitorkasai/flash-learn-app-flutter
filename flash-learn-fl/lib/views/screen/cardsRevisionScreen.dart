@@ -56,7 +56,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium
-                    ?.copyWith(color: Colors.white), // Define a cor branca
+                    ?.copyWith(color: Colors.white),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
@@ -66,7 +66,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
                   style: Theme.of(context)
                       .textTheme
                       .headlineSmall
-                      ?.copyWith(color: Colors.white), // Define a cor branca
+                      ?.copyWith(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               const SizedBox(height: 20),
@@ -102,9 +102,9 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
                 }
                     : null,
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.disabled)) {
+                  backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                        (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.disabled)) {
                         return null;
                       }
                       return Colors.deepPurple;
@@ -113,7 +113,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
                 ),
                 child: const Text(
                   'Próximo Cartão',
-                  style: TextStyle(color: Colors.white), // Texto em branco
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],
@@ -126,7 +126,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
           onPressed: widget.onNavigateUp,
           child: const Text(
             'Sair da Revisão',
-            style: TextStyle(color: Colors.white), // Texto em branco
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ),
