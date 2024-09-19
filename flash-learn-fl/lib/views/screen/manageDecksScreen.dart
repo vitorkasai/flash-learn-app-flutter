@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../viewmodel/manageDecksViewModel.dart';
 import 'addDeckScreen.dart';
 import 'deckDetailScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ManageDecksScreen extends StatefulWidget {
   final VoidCallback onNavigateUp;
@@ -31,10 +32,12 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<ManageDecksViewModel>(context);
+    final loc = AppLocalizations.of(context)!;
+
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gerenciar Decks'),
+        title: Text(loc.manageDecks),
       ),
       body: Stack(
         children: [
@@ -43,7 +46,7 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  'Selecione um Deck',
+                  loc.selectDeck,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
@@ -92,7 +95,7 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
               children: [
                 ElevatedButton(
                   onPressed: widget.onNavigateUp,
-                  child: const Text('Voltar à Tela Inicial'),
+                  child: Text(loc.backToHome),
                 ),
                 ElevatedButton(
                   onPressed: () async {
@@ -107,7 +110,7 @@ class _ManageDecksScreenState extends State<ManageDecksScreen> {
                           .loadDecks();
                     }
                   },
-                  child: const Text('Adicionar Deck'),
+                  child: Text(loc.addDeck),
                 ),
               ],
             ),

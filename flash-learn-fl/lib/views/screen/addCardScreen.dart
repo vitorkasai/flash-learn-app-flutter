@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../viewmodel/addCardViewModel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddCardScreen extends StatefulWidget {
   final String category;
@@ -24,10 +25,12 @@ class _AddCardScreenState extends State<AddCardScreen> {
   @override
   Widget build(BuildContext context) {
     final addCardViewModel = Provider.of<AddCardViewModel>(context);
+    final loc = AppLocalizations.of(context)!;
+
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Adicionar Cartão'),
+        title: const Text(''),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -35,22 +38,22 @@ class _AddCardScreenState extends State<AddCardScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Instruções: Adicione os detalhes do cartão',
+              loc.addCardDetails,
               style: Theme.of(context).textTheme.headlineMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _frontController,
-              decoration: const InputDecoration(
-                labelText: 'Frente do Cartão',
+              decoration: InputDecoration(
+                labelText: loc.cardFront,
               ),
             ),
             const SizedBox(height: 8),
             TextField(
               controller: _backController,
-              decoration: const InputDecoration(
-                labelText: 'Verso do Cartão',
+              decoration: InputDecoration(
+                labelText: loc.cardBack,
               ),
             ),
             const SizedBox(height: 16),
@@ -71,12 +74,12 @@ class _AddCardScreenState extends State<AddCardScreen> {
                         Navigator.of(context).pop(true);
                       }
                     },
-                    child: const Text('Adicionar Cartão'),
+                    child: Text(loc.addCard),
                   ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: widget.onNavigateUp,
-              child: const Text('Voltar'),
+              child: Text(loc.returnMessage),
             ),
           ],
         ),

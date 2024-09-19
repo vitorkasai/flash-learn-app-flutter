@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../viewmodel/deckDetailViewModel.dart';
 import 'addCardScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeckDetailScreen extends StatefulWidget {
   final String deckName;
@@ -36,6 +37,7 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<DeckDetailViewModel>(context);
+    final loc = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
@@ -68,14 +70,14 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Frente: ${card.front}',
+                                        '${loc.front}: ${card.front}',
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyLarge,
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
-                                        'Verso: ${card.back}',
+                                        '${loc.back}: ${card.back}',
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyLarge,
@@ -103,7 +105,7 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: widget.onNavigateUp,
-                    child: const Text('Voltar'),
+                    child: Text(loc.returnMessage),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -125,7 +127,7 @@ class _DeckDetailScreenState extends State<DeckDetailScreen> {
                         _reloadCards();
                       }
                     },
-                    child: const Text('Adicionar Cartão'),
+                    child: Text(loc.addCard),
                   ),
                 ),
               ],

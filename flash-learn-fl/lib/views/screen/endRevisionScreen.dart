@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EndRevisionScreen extends StatelessWidget {
   final VoidCallback onBackToDecks;
@@ -10,16 +11,18 @@ class EndRevisionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: Stack(
         children: [
-          const Center(
+          Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Revisão Finalizada!',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  loc.endRevision,
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -31,7 +34,7 @@ class EndRevisionScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
                 onPressed: onBackToDecks,
-                child: const Text('Voltar para os Decks'),
+                child: Text(loc.backToDecks),
               ),
             ),
           ),

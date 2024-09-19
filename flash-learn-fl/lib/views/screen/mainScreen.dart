@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../theme_provider.dart';
 import 'choiceDeckScreen.dart';
 import 'manageDecksScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -37,11 +38,12 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final loc = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Flash Learn App"),
+        title: Text(loc.appTitle),
         actions: [
           IconButton(
             icon: Icon(
@@ -61,8 +63,7 @@ class MainScreen extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: Text(
-                    "Bem-vindo ao Flash Learn App, aqui você pode usar flash cards virtuais para estudos e memorização",
+                  child: Text(loc.welcomeMessage,
                     style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
@@ -85,14 +86,14 @@ class MainScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: ElevatedButton(
                       onPressed: () => _startRevision(context),
-                      child: const Text("Iniciar revisão"),
+                      child: Text(loc.startRevision),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: ElevatedButton(
                       onPressed: () => _manageDecks(context),
-                      child: const Text("Gerenciar pilhas de cartões"),
+                      child: Text(loc.manageDecks),
                     ),
                   ),
                   const SizedBox(height: 10),

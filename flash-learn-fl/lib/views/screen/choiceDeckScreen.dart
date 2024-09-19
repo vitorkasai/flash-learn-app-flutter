@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../viewmodel/choiceDeckViewModel.dart';
 import 'cardsRevisionScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ChoiceDeckScreen extends StatelessWidget {
   final VoidCallback onNavigateUp;
@@ -14,6 +16,7 @@ class ChoiceDeckScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<ChoiceDeckViewModel>(context, listen: false);
+    final loc = AppLocalizations.of(context)!;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       viewModel.loadDecks();
@@ -21,7 +24,7 @@ class ChoiceDeckScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Escolha seu Deck'),
+        title: Text(loc.choiceDeck),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -30,7 +33,7 @@ class ChoiceDeckScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
-                'Decks disponíveis',
+                loc.avaliableDecks,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
@@ -40,8 +43,8 @@ class ChoiceDeckScreen extends StatelessWidget {
                   if (viewModel.isLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (viewModel.decks.isEmpty) {
-                    return const Center(
-                      child: Text('Nenhum deck disponível no momento.'),
+                    return Center(
+                      child: Text(loc.noAvaliableDecks),
                     );
                   } else {
                     return ListView.builder(
@@ -86,7 +89,7 @@ class ChoiceDeckScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: ElevatedButton(
                 onPressed: onNavigateUp,
-                child: const Text('Voltar para a tela inicial'),
+                child: Text(loc.backToHome),
               ),
             ),
           ],

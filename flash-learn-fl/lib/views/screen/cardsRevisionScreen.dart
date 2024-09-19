@@ -2,6 +2,8 @@ import 'package:flashlearnapp_fl/repository/cardDto.dart';
 import 'package:flutter/material.dart';
 
 import 'endRevisionScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class CardsRevisionScreen extends StatefulWidget {
   final List<CardDTO> cards;
@@ -24,6 +26,8 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     if (currentCardIndex >= widget.cards.length) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pushReplacement(
@@ -42,7 +46,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Revisando cartões'),
+        title: Text(loc.revisingCards),
       ),
       body: Center(
         child: Padding(
@@ -55,18 +59,16 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
                 currentCard.front,
                 style: Theme.of(context)
                     .textTheme
-                    .headlineMedium
-                    ?.copyWith(color: Colors.white),
+                    .headlineMedium,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
               if (isBackVisible)
                 Text(
-                  'Verso: ${currentCard.back}',
+                  '${loc.back}: ${currentCard.back}',
                   style: Theme.of(context)
                       .textTheme
-                      .headlineSmall
-                      ?.copyWith(color: Colors.white),
+                      .headlineSmall,
                   textAlign: TextAlign.center,
                 ),
               const SizedBox(height: 20),
@@ -77,7 +79,7 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
                     isNextEnabled = true;
                   });
                 },
-                child: const Text('Virar Cartão'),
+                child: Text(loc.flipCard),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -111,9 +113,9 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
                     },
                   ),
                 ),
-                child: const Text(
-                  'Próximo Cartão',
-                  style: TextStyle(color: Colors.white),
+                child: Text(
+                  loc.nextCard,
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
             ],
@@ -124,9 +126,9 @@ class _CardsRevisionScreenState extends State<CardsRevisionScreen> {
         padding: const EdgeInsets.all(16.0),
         child: ElevatedButton(
           onPressed: widget.onNavigateUp,
-          child: const Text(
-            'Sair da Revisão',
-            style: TextStyle(color: Colors.white),
+          child: Text(
+            loc.leaveRevision,
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ),

@@ -8,6 +8,8 @@ import 'package:flashlearnapp_fl/views/viewmodel/deckDetailViewModel.dart';
 import 'package:flashlearnapp_fl/views/viewmodel/manageDecksViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +41,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flash Learn App',
       theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: const MainScreen(),
     );
   }

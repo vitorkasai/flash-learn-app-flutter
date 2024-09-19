@@ -40,7 +40,7 @@ dependencies:
 
   provider: ^6.1.2
 
-  intl: any
+  intl: ^0.19.0
   dio: ^5.7.0
   retrofit: ^4.4.1
   json_annotation: ^4.9.0
@@ -50,6 +50,9 @@ dependencies:
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+
+  flutter_localizations:
     sdk: flutter
 
   # local persistence
@@ -74,6 +77,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
